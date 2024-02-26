@@ -1,0 +1,105 @@
+Naive Bayes is a probabilistic classification algorithm based on Bayes' theorem with an assumption of independence between predictors (features). Despite its simplicity, Naive Bayes often performs surprisingly well in classification tasks, especially when the assumption of independence holds reasonably well. It's particularly useful for large-scale datasets and text classification problems.
+
+Here's how Naive Bayes works:
+
+Bayes' Theorem:
+
+Naive Bayes is based on Bayes' theorem, which describes the probability of a hypothesis given the evidence.
+Mathematically, it's expressed as:
+�
+(
+�
+∣
+�
+)
+=
+�
+(
+�
+∣
+�
+)
+⋅
+�
+(
+�
+)
+�
+(
+�
+)
+P(y∣X)= 
+P(X)
+P(X∣y)⋅P(y)
+​
+ 
+where:
+�
+(
+�
+∣
+�
+)
+P(y∣X) is the posterior probability of class 
+�
+y given predictor variables 
+�
+X.
+�
+(
+�
+∣
+�
+)
+P(X∣y) is the likelihood, the probability of predictor variables given the class.
+�
+(
+�
+)
+P(y) is the prior probability of class 
+�
+y.
+�
+(
+�
+)
+P(X) is the prior probability of predictor variables.
+Independence Assumption:
+
+Naive Bayes assumes that the features are conditionally independent given the class label.
+This means that the presence of a particular feature in a class is unrelated to the presence of any other feature.
+Now, let's discuss the provided code:
+
+Loading Data:
+
+df = pd.read_csv('diabetes.csv'): This reads the diabetes dataset from a CSV file into a pandas DataFrame.
+Preparing Data:
+
+X = df.drop('Outcome',axis=1): This creates the feature matrix X by dropping the 'Outcome' column from the DataFrame.
+y = df['Outcome']: This creates the target vector y containing the 'Outcome' column, which represents the target variable to predict.
+Splitting Data:
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42): This splits the data into training and testing sets.
+Preprocessing: Scaling Features:
+
+scaler = StandardScaler(): This initializes a StandardScaler object.
+X_train_scaled = scaler.fit_transform(X_train): This scales the features in the training set.
+X_test_scaled = scaler.transform(X_test): This scales the features in the testing set using the same transformation learned from the training set.
+Initializing and Training the Naive Bayes Classifier:
+
+naive_bayes_classifier = GaussianNB(): This initializes a Gaussian Naive Bayes classifier.
+naive_bayes_classifier.fit(X_train_scaled, y_train): This trains the classifier on the scaled training data.
+Making Predictions:
+
+y_pred_nb = naive_bayes_classifier.predict(X_test_scaled): This makes predictions on the scaled testing data.
+Evaluating the Model:
+
+accuracy_nb = accuracy_score(y_test, y_pred_nb): This calculates the accuracy of the Naive Bayes classifier.
+print("Accuracy (Naive Bayes):", accuracy_nb): This prints the accuracy of the classifier.
+print("\nClassification Report (Naive Bayes):"): This prints the classification report, including precision, recall, and F1-score.
+Overall, this code demonstrates how to use the Naive Bayes classifier for classification tasks, including data preprocessing steps such as scaling features using StandardScaler.
+
+
+
+
+

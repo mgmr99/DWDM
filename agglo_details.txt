@@ -1,0 +1,30 @@
+This code snippet demonstrates how to perform agglomerative clustering using scikit-learn in Python. Here's a breakdown of each part of the code:
+
+Importing Libraries:
+
+from sklearn.cluster import AgglomerativeClustering: This imports the AgglomerativeClustering class from the scikit-learn library, which is used to perform agglomerative clustering.
+import numpy as np: This imports the NumPy library under the alias np. NumPy is used for numerical operations, and it's commonly used with scikit-learn for handling data arrays.
+Given Data Points:
+
+data: This variable holds the data points as a NumPy array. Each row represents a data point, and each column represents a feature. In this example, there are 6 data points with 2 features each.
+Initializing AgglomerativeClustering:
+
+agg_clustering = AgglomerativeClustering(n_clusters=2): This initializes an AgglomerativeClustering object with the parameter n_clusters set to 2, indicating that we want the algorithm to cluster the data into 2 clusters.
+Fitting AgglomerativeClustering to Data:
+
+agg_clustering.fit(data): This fits the agglomerative clustering algorithm to the given data. It constructs a hierarchical clustering from the data and stores the resulting clusters.
+Getting Labels:
+
+labels = agg_clustering.labels_: This retrieves the cluster labels assigned to each data point by the agglomerative clustering algorithm. These labels indicate which cluster each data point belongs to.
+Printing Labels:
+
+print(labels): This prints the cluster labels assigned to each data point.
+How Agglomerative Clustering Works:
+Agglomerative clustering is a hierarchical clustering technique where each data point initially starts as its own cluster. Then, at each iteration, the two closest clusters are merged together until a stopping criterion is met. The distance between clusters is typically measured using metrics such as Euclidean distance. The process continues until the desired number of clusters is reached or until some other stopping criterion is satisfied.
+
+In this code, the AgglomerativeClustering object is initialized with the desired number of clusters (n_clusters=2). Then, it is fitted to the given data using the fit() method. After fitting, cluster labels are obtained for each data point, indicating which cluster it belongs to. Finally, these labels are printed to the console.
+
+
+
+
+
